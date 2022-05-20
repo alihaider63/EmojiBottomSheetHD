@@ -1,5 +1,6 @@
 package com.haider.emojibottomsheet.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +44,7 @@ class EmojiBottomSheet: BottomSheetDialogFragment() {
 //        return R.style.BottomSheetDialogTheme
 //    }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,21 +62,26 @@ class EmojiBottomSheet: BottomSheetDialogFragment() {
 
         //binding.whoReactedTab.setupWithViewPager(binding.whoReactedViewpager)
         TabLayoutMediator(binding.emojiTitlesTab, binding.emojiViewpager) { tab, position ->
-            tab.text = emojiCategoriesList[position].categoryName
+
+            //tab.text = emojiCategoriesList?.get(position)?.categoryName
+            tab.icon = resources.getDrawable(
+                emojiCategoriesList[position].categoryDrawable,
+                requireContext().theme
+            )
         }.attach()
 
     }
 
     private fun initializeEmojiCategoryList(): List<Category> {
         return listOf(
-            SmileysPeopleCategory(getString(R.string.smileysAndPeopleTitle)),
-            ActivitiesCategory(getString(R.string.activitiesCategoryTitle)),
-            AnimalsNatureCategory(getString(R.string.animalsAndNatureTitle)),
-            FoodDrinkCategory(getString(R.string.foodAndDrinkTitle)),
-            ObjectsCategory(getString(R.string.objectsTitle)),
-            SymbolsCategory(getString(R.string.symbolsTitle)),
-            TravelPlacesCategory(getString(R.string.travelAndPlacesTitle)),
-            FlagsCategory(getString(R.string.flagsTitle))
+            SmileysPeopleCategory(getString(R.string.smileysAndPeopleTitle), R.drawable.emoji_ios_category_people),
+            ActivitiesCategory(getString(R.string.activitiesCategoryTitle), R.drawable.emoji_ios_category_activity),
+            AnimalsNatureCategory(getString(R.string.animalsAndNatureTitle), R.drawable.emoji_ios_category_nature),
+            FoodDrinkCategory(getString(R.string.foodAndDrinkTitle), R.drawable.emoji_ios_category_food),
+            ObjectsCategory(getString(R.string.objectsTitle), R.drawable.emoji_ios_category_objects),
+            SymbolsCategory(getString(R.string.symbolsTitle), R.drawable.emoji_ios_category_symbols),
+            TravelPlacesCategory(getString(R.string.travelAndPlacesTitle), R.drawable.emoji_ios_category_travel),
+            FlagsCategory(getString(R.string.flagsTitle), R.drawable.emoji_ios_category_flags)
         )
     }
 }
