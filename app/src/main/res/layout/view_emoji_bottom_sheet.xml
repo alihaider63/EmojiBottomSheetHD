@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:behavior_peekHeight="72dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/emoji_titles_tab"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            app:tabMode="scrollable"
+            android:background="@color/background_color"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabIndicatorColor="@color/tab_indicator_color"
+            app:tabTextColor="@color/tab_bar_item_unselected"
+            app:tabSelectedTextColor="@color/tab_selected_title_color" />
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/emoji_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_color" />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
