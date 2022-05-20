@@ -9,8 +9,8 @@ import com.haider.emojibottomsheet.emoji.EmojInitListener
 import com.haider.emojibottomsheet.emoji.EmojiCategoryTransformer
 import com.haider.emojibottomsheet.emoji.EmojiCompatUtils
 import com.haider.emojibottomsheet.emoji.categories.*
-import com.haider.emojibottomsheet.view.EmojiClickListener
-import com.haider.emojibottomsheet.view.EmojiPickerDialog
+//import com.haider.emojibottomsheet.view.EmojiClickListener
+//import com.haider.emojibottomsheet.view.EmojiPickerDialog
 import com.haider.emojibottomsheet.view.recyclerview.EmojiItemView
 
 class MainActivity : AppCompatActivity() {
@@ -35,15 +35,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showEmojiDialog() {
-        EmojiPickerDialog.Builder(this@MainActivity, emojiItemViewList)
-            .dismissWithAnimation(true)
-            .title(getString(R.string.emojiDialogTitle))
-            .cancelable(true)
-            .listener(object : EmojiClickListener {
-                override fun emojiClicked(unicode: EmojiItemView) {
-                    binding.tvSelectedEmojiName.text = unicode.value
-                }
-            }).build().show()
+//        EmojiPickerDialog.Builder(this@MainActivity, emojiItemViewList)
+//            .dismissWithAnimation(true)
+//            .title(getString(R.string.emojiDialogTitle))
+//            .cancelable(true)
+//            .listener(object : EmojiClickListener {
+//                override fun emojiClicked(unicode: EmojiItemView) {
+//                    binding.tvSelectedEmojiName.text = unicode.value
+//                }
+//            }).build().show()
     }
 
     private fun initializeEmojiCategoryList(): List<Category> {

@@ -5,4 +5,4 @@ import com.haider.emojibottomsheet.emoji.categoryUnicodes.SmileysPeopleCategoryU
 data class SmileysPeopleCategory(
     override val categoryName: String,
     override val categoryUnicode: List<SmileysPeopleCategoryUnicodes> = enumValues<SmileysPeopleCategoryUnicodes>().toList()
-) : Category(categoryName, categoryUnicode)
+) : Category

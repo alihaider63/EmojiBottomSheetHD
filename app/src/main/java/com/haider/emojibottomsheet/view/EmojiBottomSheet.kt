@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.haider.emojibottomsheet.R
 import com.haider.emojibottomsheet.databinding.ViewEmojiBottomSheetBinding
 import com.haider.emojibottomsheet.emoji.EmojiCategoryTransformer
-import com.haider.emojibottomsheet.emoji.categories.Category
+import com.haider.emojibottomsheet.emoji.categories.*
 import com.haider.emojibottomsheet.view.recyclerview.BottomSheetPagesAdapter
 import com.haider.emojibottomsheet.view.recyclerview.EmojiItemView
 
@@ -41,7 +42,9 @@ class EmojiBottomSheet: BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val emojiCategoriesList = arguments?.getParcelableArrayList<Category>(EMOJI_CATEGORIES_LIST)
+        //val emojiCategoriesList = arguments?.getParcelableArrayList<Category>(EMOJI_CATEGORIES_LIST)
+
+        val emojiCategoriesList = initializeEmojiCategoryList()
 
         val adapter = BottomSheetPagesAdapter(this)
 
@@ -60,5 +63,18 @@ class EmojiBottomSheet: BottomSheetDialogFragment() {
             tab.text = emojiCategoriesList?.get(position)?.categoryName
         }.attach()
 
+    }
+
+    private fun initializeEmojiCategoryList(): List<Category> {
+        return listOf(
+            SmileysPeopleCategory(getString(R.string.smileysAndPeopleTitle)),
+            ActivitiesCategory(getString(R.string.activitiesCategoryTitle)),
+            AnimalsNatureCategory(getString(R.string.animalsAndNatureTitle)),
+            FoodDrinkCategory(getString(R.string.foodAndDrinkTitle)),
+            ObjectsCategory(getString(R.string.objectsTitle)),
+            SymbolsCategory(getString(R.string.symbolsTitle)),
+            TravelPlacesCategory(getString(R.string.travelAndPlacesTitle)),
+            FlagsCategory(getString(R.string.flagsTitle))
+        )
     }
 }
