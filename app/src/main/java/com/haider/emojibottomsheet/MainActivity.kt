@@ -9,6 +9,7 @@ import com.haider.emojibottomsheet.emoji.EmojInitListener
 import com.haider.emojibottomsheet.emoji.EmojiCategoryTransformer
 import com.haider.emojibottomsheet.emoji.EmojiCompatUtils
 import com.haider.emojibottomsheet.emoji.categories.*
+import com.haider.emojibottomsheet.view.EmojiBottomSheet
 //import com.haider.emojibottomsheet.view.EmojiClickListener
 //import com.haider.emojibottomsheet.view.EmojiPickerDialog
 import com.haider.emojibottomsheet.view.recyclerview.EmojiItemView
@@ -20,21 +21,42 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initializeEmojiCategoriesPreferred()
+
+        initializeEmojis()
+    }
+
+//    private fun initializeEmojiCategoriesPreferred() {
+//        emojiItemViewList = EmojiCategoryTransformer().transform(initializeEmojiCategoryList())
+//    }
+
+
+    private fun initializeEmojis() {
+        EmojiCompatUtils.initialize(applicationContext, object : EmojInitListener {
+            override fun onEmojisInitialized() {
+                emojisInitializedActions()
+            }
+
+            override fun onEmojisInitializedError() {
+                //throw exception
+            }
+        })
+    }
+
+
+    private fun emojisInitializedActions() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         binding.button.setOnClickListener {
             showEmojiDialog()
         }
     }
 
-    private fun initializeEmojiCategoriesPreferred() {
-        emojiItemViewList = EmojiCategoryTransformer().transform(initializeEmojiCategoryList())
-    }
-
     private fun showEmojiDialog() {
+        EmojiBottomSheet().show(
+            supportFragmentManager,
+            EmojiBottomSheet::class.java.simpleName
+        )
 //        EmojiPickerDialog.Builder(this@MainActivity, emojiItemViewList)
 //            .dismissWithAnimation(true)
 //            .title(getString(R.string.emojiDialogTitle))
@@ -46,16 +68,16 @@ class MainActivity : AppCompatActivity() {
 //            }).build().show()
     }
 
-    private fun initializeEmojiCategoryList(): List<Category> {
-        return listOf(
-            SmileysPeopleCategory(getString(R.string.smileysAndPeopleTitle)),
-            ActivitiesCategory(getString(R.string.activitiesCategoryTitle)),
-            AnimalsNatureCategory(getString(R.string.animalsAndNatureTitle)),
-            FoodDrinkCategory(getString(R.string.foodAndDrinkTitle)),
-            ObjectsCategory(getString(R.string.objectsTitle)),
-            SymbolsCategory(getString(R.string.symbolsTitle)),
-            TravelPlacesCategory(getString(R.string.travelAndPlacesTitle)),
-            FlagsCategory(getString(R.string.flagsTitle))
-            )
-    }
+//    private fun initializeEmojiCategoryList(): List<Category> {
+//        return listOf(
+//            SmileysPeopleCategory(getString(R.string.smileysAndPeopleTitle)),
+//            ActivitiesCategory(getString(R.string.activitiesCategoryTitle)),
+//            AnimalsNatureCategory(getString(R.string.animalsAndNatureTitle)),
+//            FoodDrinkCategory(getString(R.string.foodAndDrinkTitle)),
+//            ObjectsCategory(getString(R.string.objectsTitle)),
+//            SymbolsCategory(getString(R.string.symbolsTitle)),
+//            TravelPlacesCategory(getString(R.string.travelAndPlacesTitle)),
+//            FlagsCategory(getString(R.string.flagsTitle))
+//            )
+//    }
 }

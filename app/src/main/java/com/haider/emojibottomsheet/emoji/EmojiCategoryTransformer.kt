@@ -11,7 +11,7 @@ class EmojiCategoryTransformer {
     private fun transformCategoriesToEmojiItems(createEmojiList: List<Category>): List<EmojiItemView> {
         val list: MutableList<EmojiItemView> = mutableListOf()
         createEmojiList.map { category ->
-            list.add(EmojiItemView.createTitleViewItem(category.categoryName))
+            //list.add(EmojiItemView.createTitleViewItem(category.categoryName))
             list.apply {
                 category.categoryUnicode.forEach {
                     list.add(EmojiItemView.createEmojiViewItem(it.unicode, it.name))
@@ -27,7 +27,7 @@ class EmojiCategoryTransformer {
     private fun transformCategoryToEmojiItems(category: Category): List<EmojiItemView> {
         val list: MutableList<EmojiItemView> = mutableListOf()
 
-        list.add(EmojiItemView.createTitleViewItem(category.categoryName))
+        //list.add(EmojiItemView.createTitleViewItem(category.categoryName))
         list.apply {
             category.categoryUnicode.forEach {
                 list.add(EmojiItemView.createEmojiViewItem(it.unicode, it.name))

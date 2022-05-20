@@ -200,7 +200,7 @@ enum class TravelPlacesCategoryUnicodes(override val unicode: ByteArray) : Categ
     CYCLONE("🌀".toByteArray(Charsets.UTF_8)),
     RAINBOW("🌈".toByteArray(Charsets.UTF_8)),
     CLOSED_UMBRELLA("🌂".toByteArray(Charsets.UTF_8)),
-    UMBRELLA("☂".toByteArray(Charsets.UTF_8)),
+//    UMBRELLA("☂".toByteArray(Charsets.UTF_8)),
     UMBRELLA_WITH_RAIN_DROPS("☔".toByteArray(Charsets.UTF_8)),
     UMBRELLA_ON_GROUND("⛱️".toByteArray(Charsets.UTF_8)),
     HIGH_VOLTAGE("⚡".toByteArray(Charsets.UTF_8)),

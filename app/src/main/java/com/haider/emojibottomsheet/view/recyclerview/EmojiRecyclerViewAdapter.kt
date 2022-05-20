@@ -13,33 +13,35 @@ class EmojiRecyclerViewAdapter(
 ) : RecyclerView.Adapter<EmojiRecyclerViewAdapter.EmojiListHolder>() {
 
     class EmojiListHolder(inflatedView: View) : RecyclerView.ViewHolder(inflatedView) {
-        val emojiTextView: TextView? by bind(R.id.etv_emoji)
-        val textView: TextView? by bind(R.id.tv_title)
+        val emojiTextView: EmojiTextView? by bind(R.id.etv_emoji)
+        //val textView: TextView? by bind(R.id.tv_title)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmojiListHolder {
         return EmojiListHolder(
-            when (viewType) {
-                EmojiItemType.TITLE.ordinal -> {
-                    LayoutInflater.from(parent.context).inflate(R.layout.row_title, parent, false)
-                }
-                else -> {
-                    LayoutInflater.from(parent.context).inflate(R.layout.row_emoji, parent, false)
-                }
-            }
+            LayoutInflater.from(parent.context).inflate(R.layout.row_emoji, parent, false)
+//            when (viewType) {
+//                EmojiItemType.TITLE.ordinal -> {
+//                    LayoutInflater.from(parent.context).inflate(R.layout.row_title, parent, false)
+//                }
+//                else -> {
+//                    LayoutInflater.from(parent.context).inflate(R.layout.row_emoji, parent, false)
+//                }
+//            }
         )
     }
 
     override fun onBindViewHolder(holder: EmojiListHolder, position: Int) {
-        when (isHeader(position)) {
-            true -> createTitleItem(holder, position)
-            false -> createEmojiItem(holder, position)
-        }
+//        when (isHeader(position)) {
+//            true -> createTitleItem(holder, position)
+//            false -> createEmojiItem(holder, position)
+//        }
+        createEmojiItem(holder, position)
     }
 
-    private fun createTitleItem(holder: EmojiListHolder, position: Int) {
-        holder.textView?.let { it.text = getEmojiItem(position).value }
-    }
+//    private fun createTitleItem(holder: EmojiListHolder, position: Int) {
+//        holder.textView?.let { it.text = getEmojiItem(position).value }
+//    }
 
     private fun createEmojiItem(holder: EmojiListHolder, position: Int) {
         holder.emojiTextView?.let { item ->
@@ -58,7 +60,7 @@ class EmojiRecyclerViewAdapter(
 
     override fun getItemViewType(position: Int) = getEmojiItem(position).type.ordinal
 
-    fun isHeader(position: Int): Boolean = getEmojiItem(position).type.ordinal == EmojiItemType.TITLE.ordinal
+    //fun isHeader(position: Int): Boolean = getEmojiItem(position).type.ordinal == EmojiItemType.TITLE.ordinal
 
     internal var emojiClickedListener: (EmojiItemView, View) -> Unit = { _, _ -> }
 

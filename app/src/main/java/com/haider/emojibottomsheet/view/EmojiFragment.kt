@@ -65,11 +65,11 @@ class EmojiFragment : Fragment() {
             binding.recyclerViewEmojis.layoutManager = this
             isSmoothScrollbarEnabled = true
             orientation = RecyclerView.VERTICAL
-            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return if ((binding.recyclerViewEmojis.adapter as EmojiRecyclerViewAdapter).isHeader(position)) gridLayoutManager.spanCount else 1
-                }
-            }
+//            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+//                override fun getSpanSize(position: Int): Int {
+//                    return if ((binding.recyclerViewEmojis.adapter as EmojiRecyclerViewAdapter).isHeader(position)) gridLayoutManager.spanCount else 1
+//                }
+//            }
         }
     }
 }

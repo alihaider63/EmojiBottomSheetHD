@@ -15,14 +15,18 @@ import com.haider.emojibottomsheet.view.recyclerview.EmojiItemView
 
 class EmojiBottomSheet: BottomSheetDialogFragment() {
 
+
+    interface EmojiClickListener {
+        fun onEmojiClicked(unicode: String)
+    }
+
     private lateinit var binding: ViewEmojiBottomSheetBinding
+    private var emojiListener: EmojiClickListener? = null
 
     companion object {
         const val EMOJI_CATEGORIES_LIST = "EMOJI_CATEGORIES_LIST"
-        fun getNewInstance(whoReactedList: ArrayList<EmojiItemView>) = EmojiBottomSheet().apply {
-            val bundle = Bundle()
-            bundle.putParcelableArrayList(EMOJI_CATEGORIES_LIST, whoReactedList)
-            arguments = bundle
+        fun getNewInstance(emojiClickListener: EmojiClickListener) = EmojiBottomSheet().apply {
+            emojiListener = emojiClickListener
         }
     }
 
@@ -34,33 +38,29 @@ class EmojiBottomSheet: BottomSheetDialogFragment() {
         binding = ViewEmojiBottomSheetBinding.inflate(inflater)
         return binding.root
     }
-//
+
 //    override fun getTheme(): Int {
-//        return R.style.AppBottomSheetDialogTheme
+//        return R.style.BottomSheetDialogTheme
 //    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val emojiCategoriesList = arguments?.getParcelableArrayList<Category>(EMOJI_CATEGORIES_LIST)
-
         val emojiCategoriesList = initializeEmojiCategoryList()
 
         val adapter = BottomSheetPagesAdapter(this)
 
-        if (emojiCategoriesList != null) {
-            for (emojiCategory in emojiCategoriesList) {
-                val emojiCategoriesList = EmojiCategoryTransformer().transform(emojiCategory)
-                val fragment = EmojiFragment.getNewInstance(ArrayList(emojiCategoriesList))
-                adapter.addFragment(fragment, "")
-            }
+        for (emojiCategory in emojiCategoriesList) {
+            val emojiCategoriesList = EmojiCategoryTransformer().transform(emojiCategory)
+            val fragment = EmojiFragment.getNewInstance(ArrayList(emojiCategoriesList))
+            adapter.addFragment(fragment, "")
         }
 
         binding.emojiViewpager.adapter = adapter
 
         //binding.whoReactedTab.setupWithViewPager(binding.whoReactedViewpager)
         TabLayoutMediator(binding.emojiTitlesTab, binding.emojiViewpager) { tab, position ->
-            tab.text = emojiCategoriesList?.get(position)?.categoryName
+            tab.text = emojiCategoriesList[position].categoryName
         }.attach()
 
     }

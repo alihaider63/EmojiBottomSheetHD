@@ -10,15 +10,10 @@ data class EmojiItemView(val value: String, val type: EmojiItemType = EmojiItemT
         fun createEmojiViewItem(unicode: ByteArray, unicodeName: String): EmojiItemView {
             return EmojiItemView(unicode.toAscii(), EmojiItemType.EMOJI, unicodeName)
         }
-
-        fun createTitleViewItem(categoryName: String): EmojiItemView {
-            return EmojiItemView(categoryName, EmojiItemType.TITLE)
-        }
     }
 }
 
 enum class EmojiItemType {
-    TITLE,
     EMOJI
 }
 
