@@ -48,7 +48,7 @@ class EmojiFragment : Fragment() {
             //adapter = EmojiSheetTitlesAdapter(userList)
             attachLayoutManager()
             binding.recyclerViewEmojis.adapter = EmojiRecyclerViewAdapter(emojiItemViewList).apply {
-                emojiClickedListener = { item, view ->
+                emojiClickedListener = { item, _ ->
                     selectEmoji(item)
                 }
 
