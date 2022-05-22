@@ -9,7 +9,7 @@
     <dimen name="dim_25">25dp</dimen>
     <dimen name="dim_40">40dp</dimen>
 
-    <dimen name="emoji_size">28sp</dimen>
+    <dimen name="emoji_size">20sp</dimen>
     <dimen name="text_plain">14sp</dimen>
     <dimen name="text_h1_size">96sp</dimen>
     <dimen name="text_h2_size">64sp</dimen>

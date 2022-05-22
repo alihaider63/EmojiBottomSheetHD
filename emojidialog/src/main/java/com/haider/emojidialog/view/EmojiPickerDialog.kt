@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.haider.emojidialog.R
+import com.haider.emojidialog.databinding.ViewEmojiBottomSheetBinding
 import com.haider.emojidialog.emoji.EmojiCategoryTransformer
 import com.haider.emojidialog.emoji.categories.*
 import com.haider.emojidialog.view.recyclerview.BottomSheetPagesAdapter

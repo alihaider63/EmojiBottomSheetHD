@@ -17,16 +17,15 @@
 
 
     <androidx.emoji.widget.EmojiTextView
-        android:id="@+id/emoji_value"
+        android:id="@+id/emojiValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:textSize="28sp"
+        android:layout_marginTop="256dp"
+        android:textAppearance="@style/EmojiBottomSheet.TextAppearance.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="\uD83C\uDF44" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

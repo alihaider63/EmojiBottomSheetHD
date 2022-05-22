@@ -4,8 +4,7 @@
     android:id="@+id/etv_emoji"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingBottom="8dp"
-    android:layout_margin="4dp"
+    android:paddingBottom="@dimen/dim_16"
     android:textColor="@color/colorPrimary"
     android:textSize="@dimen/emoji_size"
     tools:text="\uD83C\uDF44" />

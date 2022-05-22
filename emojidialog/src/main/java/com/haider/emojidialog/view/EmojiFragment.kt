@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.haider.emojibottomsheet.databinding.FragmentEmojiBinding
+import com.haider.emojidialog.databinding.FragmentEmojiBinding
 import com.haider.emojidialog.view.recyclerview.EmojiItemView
 import com.haider.emojidialog.view.recyclerview.EmojiRecyclerViewAdapter
 

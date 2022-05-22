@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/row_title.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/view_emoji_bottom_sheet.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/view_emoji_category.xml" value="0.234375" />
+        <entry key="emojidialog/src/main/res/layout/view_emoji_category.xml" value="0.11614583333333334" />
       </map>
     </option>
   </component>
