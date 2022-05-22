@@ -4,6 +4,5 @@ import com.haider.emojibottomsheet.emoji.categoryUnicodes.TravelPlacesCategoryUn
 
 data class TravelPlacesCategory(
     override val categoryName: String,
-    override val categoryDrawable: Int,
     override val categoryUnicode: List<TravelPlacesCategoryUnicodes> = enumValues<TravelPlacesCategoryUnicodes>().toList()
 ) : Category

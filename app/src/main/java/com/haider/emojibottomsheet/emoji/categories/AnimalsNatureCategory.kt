@@ -4,6 +4,5 @@ import com.haider.emojibottomsheet.emoji.categoryUnicodes.AnimalsNatureCategoryU
 
 data class AnimalsNatureCategory(
     override val categoryName: String,
-    override val categoryDrawable: Int,
     override val categoryUnicode: List<AnimalsNatureCategoryUnicodes> = enumValues<AnimalsNatureCategoryUnicodes>().toList()
 ) : Category

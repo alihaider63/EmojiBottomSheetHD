@@ -1,42 +1,31 @@
 package com.haider.emojibottomsheet
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.emoji.widget.EmojiTextView
 import com.haider.emojibottomsheet.databinding.ActivityMainBinding
-import com.haider.emojibottomsheet.emoji.EmojInitListener
-import com.haider.emojibottomsheet.emoji.EmojiCategoryTransformer
 import com.haider.emojibottomsheet.emoji.EmojiCompatUtils
-import com.haider.emojibottomsheet.emoji.categories.*
-import com.haider.emojibottomsheet.view.EmojiBottomSheet
-//import com.haider.emojibottomsheet.view.EmojiClickListener
-//import com.haider.emojibottomsheet.view.EmojiPickerDialog
-import com.haider.emojibottomsheet.view.recyclerview.EmojiItemView
+import com.haider.emojibottomsheet.emoji.EmojiInitListener
+import com.haider.emojibottomsheet.view.EmojiPickerDialog
 
 class MainActivity : AppCompatActivity() {
 
-    private var emojiItemViewList: List<EmojiItemView> = emptyList()
     lateinit var binding: ActivityMainBinding
+    private var emojiPickerDialog: EmojiPickerDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeEmojis()
     }
 
-//    private fun initializeEmojiCategoriesPreferred() {
-//        emojiItemViewList = EmojiCategoryTransformer().transform(initializeEmojiCategoryList())
-//    }
-
-
     private fun initializeEmojis() {
-        EmojiCompatUtils.initialize(applicationContext, object : EmojInitListener {
-            override fun onEmojisInitialized() {
-                emojisInitializedActions()
-            }
+        EmojiCompatUtils.initialize(applicationContext, object : EmojiInitListener {
 
-            override fun onEmojisInitializedError() {
-                //throw exception
+            override fun onEmojisInitialized(isInitialized: Boolean, throwable: Throwable?) {
+                if (isInitialized) {
+                    emojisInitializedActions()
+                } else {
+                    // handle error
+                }
             }
         })
     }
@@ -46,37 +35,26 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        EmojiPickerDialog.initializeEmojiCategories()
+
         binding.button.setOnClickListener {
             showEmojiDialog()
         }
     }
 
-    private fun showEmojiDialog() {
-        EmojiBottomSheet().show(
-            supportFragmentManager,
-            EmojiBottomSheet::class.java.simpleName
-        )
-//        EmojiPickerDialog.Builder(this@MainActivity, emojiItemViewList)
-//            .dismissWithAnimation(true)
-//            .title(getString(R.string.emojiDialogTitle))
-//            .cancelable(true)
-//            .listener(object : EmojiClickListener {
-//                override fun emojiClicked(unicode: EmojiItemView) {
-//                    binding.tvSelectedEmojiName.text = unicode.value
-//                }
-//            }).build().show()
+    private val emojiListener = object : EmojiPickerDialog.EmojiClickListener {
+        override fun onEmojiClicked(unicode: String) {
+            binding.emojiValue.text = unicode
+            emojiPickerDialog?.dismiss()
+        }
+
     }
 
-//    private fun initializeEmojiCategoryList(): List<Category> {
-//        return listOf(
-//            SmileysPeopleCategory(getString(R.string.smileysAndPeopleTitle)),
-//            ActivitiesCategory(getString(R.string.activitiesCategoryTitle)),
-//            AnimalsNatureCategory(getString(R.string.animalsAndNatureTitle)),
-//            FoodDrinkCategory(getString(R.string.foodAndDrinkTitle)),
-//            ObjectsCategory(getString(R.string.objectsTitle)),
-//            SymbolsCategory(getString(R.string.symbolsTitle)),
-//            TravelPlacesCategory(getString(R.string.travelAndPlacesTitle)),
-//            FlagsCategory(getString(R.string.flagsTitle))
-//            )
-//    }
+    private fun showEmojiDialog() {
+        emojiPickerDialog = EmojiPickerDialog(
+            supportFragmentManager,
+            emojiListener
+        )
+        emojiPickerDialog?.show()
+    }
 }

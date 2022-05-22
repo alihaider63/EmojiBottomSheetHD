@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
@@ -14,8 +14,8 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/emoji_titles_tab"
             android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
-            app:tabMode="scrollable"
+            android:layout_height="40dp"
+            app:tabMode="fixed"
             android:background="@color/background_color"
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             app:tabIndicatorColor="@color/tab_indicator_color"

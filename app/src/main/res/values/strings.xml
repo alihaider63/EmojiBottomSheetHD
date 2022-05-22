@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">EmojiBottomSheet</string>
+
     <string name="emojiDialogTitle">Choose an emoji:</string>
     <string name="activitiesCategoryTitle">Activity</string>
     <string name="smileysAndPeopleTitle">Smileys and People</string>

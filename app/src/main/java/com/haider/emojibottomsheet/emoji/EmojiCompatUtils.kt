@@ -10,7 +10,7 @@ object EmojiCompatUtils {
 
     private var emojiCompat: EmojiCompat? = null
 
-    fun initialize(context: Context, emojiListener: EmojInitListener) {
+    fun initialize(context: Context, emojiListener: EmojiInitListener) {
         emojiCompat = EmojiCompat.init(FontRequestEmojiCompatConfig(context, createFontRequest()).apply {
             setReplaceAll(true)
             registerInitCallback(InitCallback(emojiListener))
@@ -28,15 +28,15 @@ object EmojiCompatUtils {
         return emojiCompat?.hasEmojiGlyph(unicodeString) ?: false
     }
 
-    private class InitCallback internal constructor(private val listener: EmojInitListener) : EmojiCompat.InitCallback() {
+    private class InitCallback internal constructor(private val listener: EmojiInitListener) : EmojiCompat.InitCallback() {
 
         override fun onInitialized() {
-            listener.onEmojisInitialized()
+            listener.onEmojisInitialized(true)
         }
 
         override fun onFailed(throwable: Throwable?) {
             super.onFailed(throwable)
-            listener.onEmojisInitializedError()
+            listener.onEmojisInitialized(false, throwable)
         }
     }
 }

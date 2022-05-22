@@ -4,6 +4,6 @@ import com.haider.emojibottomsheet.emoji.categoryUnicodes.FoodDrinkCategoryUnico
 
 data class FoodDrinkCategory(
     override val categoryName: String,
-    override val categoryDrawable: Int,
+//    override val categoryDrawable: Int,
     override val categoryUnicode: List<FoodDrinkCategoryUnicodes> = enumValues<FoodDrinkCategoryUnicodes>().toList()
 ) : Category

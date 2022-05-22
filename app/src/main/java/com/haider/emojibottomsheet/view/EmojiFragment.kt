@@ -14,13 +14,16 @@ import com.haider.emojibottomsheet.view.recyclerview.EmojiRecyclerViewAdapter
 class EmojiFragment : Fragment() {
 
     private lateinit var binding: FragmentEmojiBinding
-    //private lateinit var adapter: EmojiSheetTitlesAdapter
-
     private lateinit var gridLayoutManager: GridLayoutManager
+    private lateinit var listener: EmojiPickerDialog.EmojiClickListener
 
     companion object {
         private const val EMOJI_LIST = "EMOJI_LIST"
-        fun getNewInstance(userList: ArrayList<EmojiItemView>) = EmojiFragment().apply {
+        fun getNewInstance(
+            userList: ArrayList<EmojiItemView>,
+            emojiListener: EmojiPickerDialog.EmojiClickListener
+        ) = EmojiFragment().apply {
+            listener = emojiListener
             val bundle = Bundle()
             bundle.putParcelableArrayList(EMOJI_LIST, userList)
             arguments = bundle
@@ -45,8 +48,8 @@ class EmojiFragment : Fragment() {
             //adapter = EmojiSheetTitlesAdapter(userList)
             attachLayoutManager()
             binding.recyclerViewEmojis.adapter = EmojiRecyclerViewAdapter(emojiItemViewList).apply {
-                emojiClickedListener = { unicode, view ->
-                    selectEmoji(unicode)
+                emojiClickedListener = { item, view ->
+                    selectEmoji(item)
                 }
 
             }
@@ -55,21 +58,15 @@ class EmojiFragment : Fragment() {
     }
 
     private fun selectEmoji(itemView: EmojiItemView) {
-        //listener?.emojiClicked(itemView)
-        //bottomSheetDialog.dismiss()
+        listener.onEmojiClicked(itemView.unicode)
     }
 
     private fun attachLayoutManager() {
-        gridLayoutManager = GridLayoutManager(context, 10)
+        gridLayoutManager = GridLayoutManager(context, 8)
         gridLayoutManager.apply {
             binding.recyclerViewEmojis.layoutManager = this
             isSmoothScrollbarEnabled = true
             orientation = RecyclerView.VERTICAL
-//            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-//                override fun getSpanSize(position: Int): Int {
-//                    return if ((binding.recyclerViewEmojis.adapter as EmojiRecyclerViewAdapter).isHeader(position)) gridLayoutManager.spanCount else 1
-//                }
-//            }
         }
     }
 }

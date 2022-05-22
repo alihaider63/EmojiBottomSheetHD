@@ -30,7 +30,7 @@ enum class TravelPlacesCategoryUnicodes(override val unicode: ByteArray) : Categ
     ONCOMING_TAXI("🚖".toByteArray(Charsets.UTF_8)),
     AERIAL_TRAMWAY("🚡".toByteArray(Charsets.UTF_8)),
     MOUNTAIN_CABLEWAY("🚠".toByteArray(Charsets.UTF_8)),
-    SUSPENSION_RAILWAY(" 🚟".toByteArray(Charsets.UTF_8)),
+    SUSPENSION_RAILWAY("🚟".toByteArray(Charsets.UTF_8)),
     RAILWAY_CAR("🚃".toByteArray(Charsets.UTF_8)),
     TRAM_CAR("🚋".toByteArray(Charsets.UTF_8)),
     MOUNTAIN_RAILWAY("🚞".toByteArray(Charsets.UTF_8)),
@@ -128,7 +128,6 @@ enum class TravelPlacesCategoryUnicodes(override val unicode: ByteArray) : Categ
     NIGHT_WITH_STARS("🌃".toByteArray(Charsets.UTF_8)),
     MILKY_WAY("🌌".toByteArray(Charsets.UTF_8)),
     BRIDGE_AT_NIGHT("🌉".toByteArray(Charsets.UTF_8)),
-    FOGGY("🌁".toByteArray(Charsets.UTF_8)),
-    SHIBUYA("\uE50A".toByteArray(Charsets.UTF_8));
+    FOGGY("🌁".toByteArray(Charsets.UTF_8))
 }
 
