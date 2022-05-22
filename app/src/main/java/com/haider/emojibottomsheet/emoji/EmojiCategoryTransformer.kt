@@ -22,7 +22,9 @@ class EmojiCategoryTransformer {
     }
 
 
-    fun transform(category: Category): List<EmojiItemView> = transformCategoryToEmojiItems(category)
+    fun transform(category: Category): List<EmojiItemView> = transformCategoryToEmojiItems(category).filter {
+        EmojiCompatUtils.hasEmojiGlyph(it.value)
+    }
 
     private fun transformCategoryToEmojiItems(category: Category): List<EmojiItemView> {
         val list: MutableList<EmojiItemView> = mutableListOf()
