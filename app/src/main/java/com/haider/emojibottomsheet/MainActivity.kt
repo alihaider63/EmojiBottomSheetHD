@@ -35,11 +35,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        EmojiPickerDialog.initializeEmojiCategories()
 
         binding.button.setOnClickListener {
             showEmojiDialog()
         }
+
+        EmojiPickerDialog.initializeEmojiCategories()
     }
 
     private val emojiListener = object : EmojiPickerDialog.EmojiClickListener {

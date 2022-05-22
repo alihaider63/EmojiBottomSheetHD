@@ -6,8 +6,8 @@ import com.haider.emojibottomsheet.view.recyclerview.EmojiItemView
 class EmojiCategoryTransformer {
 
     fun transform(category: Category): List<EmojiItemView> = transformCategoryToEmojiItems(category).filter {
-        //EmojiCompatUtils.hasEmojiGlyph(it.unicode)
-        true
+        EmojiCompatUtils.hasEmojiGlyph(it.unicode)
+//        true
     }
 
     private fun transformCategoryToEmojiItems(category: Category): List<EmojiItemView> {
