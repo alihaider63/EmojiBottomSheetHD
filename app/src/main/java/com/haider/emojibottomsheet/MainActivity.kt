@@ -3,9 +3,9 @@ package com.haider.emojibottomsheet
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.haider.emojibottomsheet.databinding.ActivityMainBinding
-import com.haider.emojibottomsheet.emoji.EmojiCompatUtils
-import com.haider.emojibottomsheet.emoji.EmojiInitListener
-import com.haider.emojibottomsheet.view.EmojiPickerDialog
+import com.haider.emojidialog.emoji.EmojiCompatUtils
+import com.haider.emojidialog.emoji.EmojiInitListener
+import com.haider.emojidialog.view.EmojiPickerDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeEmojis() {
-        EmojiCompatUtils.initialize(applicationContext, object : EmojiInitListener {
+        EmojiCompatUtils.initialize(applicationContext, object :
+            EmojiInitListener {
 
             override fun onEmojisInitialized(isInitialized: Boolean, throwable: Throwable?) {
                 if (isInitialized) {
