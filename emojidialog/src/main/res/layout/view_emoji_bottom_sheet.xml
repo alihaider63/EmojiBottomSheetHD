@@ -15,7 +15,7 @@
             android:id="@+id/emoji_titles_tab"
             android:layout_width="match_parent"
             android:layout_height="?android:actionBarSize"
-            app:tabMode="scrollable"
+            app:tabMode="fixed"
             android:background="@color/background_color"
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             app:tabIndicatorColor="@color/tab_indicator_color"
