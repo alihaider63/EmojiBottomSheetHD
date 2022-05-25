@@ -19,7 +19,7 @@
             android:background="@color/background_color"
             app:tabIndicatorColor="@color/tab_indicator_color"
             app:tabTextColor="@color/tab_bar_item_unselected"
-            app:tabIconTint="@color/tab_selected_title_color"
+            app:tabIconTint="@color/emoji_category_titles_tint"
             />
 
 
