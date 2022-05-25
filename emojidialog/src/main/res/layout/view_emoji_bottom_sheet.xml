@@ -14,13 +14,13 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/emoji_titles_tab"
             android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
+            android:layout_height="@dimen/dim_40"
             app:tabMode="fixed"
             android:background="@color/background_color"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             app:tabIndicatorColor="@color/tab_indicator_color"
             app:tabTextColor="@color/tab_bar_item_unselected"
-            app:tabSelectedTextColor="@color/tab_selected_title_color" />
+            app:tabIconTint="@color/tab_selected_title_color"
+            />
 
 
         <androidx.viewpager2.widget.ViewPager2

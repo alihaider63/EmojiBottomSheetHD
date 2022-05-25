@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.EmojiBottomSheet" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/brand_color</item>
+        <item name="colorPrimaryVariant">@color/brand_color</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -14,14 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="EmojiBottomSheet" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<!--    <style name="EmojiBottomSheet" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
 
-        <!-- Dialog style -->
-        <item name="bottomSheetDialogTheme">@style/EmojiBottomSheetDialogTheme</item>
-    </style>
+<!--        &lt;!&ndash; Dialog style &ndash;&gt;-->
+<!--        <item name="bottomSheetDialogTheme">@style/EmojiBottomSheetDialogTheme</item>-->
+<!--    </style>-->
 
     <style name="EmojiBottomSheet.TextAppearance.Bold" parent="EmojiBottomSheet">
         <item name="android:textColor">@color/greyDark</item>
@@ -66,7 +66,20 @@
 
     <style name="BottomSheetDialogTheme"
         parent="Theme.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/BottomSheetDialogTheme</item>
+        <item name="bottomSheetStyle">@style/CircleInBottomSheetStyle</item>
     </style>
+
+    // Chat Reactions BottomSheet Style
+    <style name="BottomSheetStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@color/style_pink_color</item>
+    </style>
+
+    <style name="BottomSheetDialogTestTheme"
+        parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+
 
 </resources>

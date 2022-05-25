@@ -20,12 +20,14 @@ class EmojiFragment : Fragment() {
     companion object {
         private const val EMOJI_LIST = "EMOJI_LIST"
         fun getNewInstance(
-            userList: ArrayList<EmojiItemView>,
+            //userList: ArrayList<EmojiItemView>,
+            userList: ArrayList<String>,
             emojiListener: EmojiPickerDialog.EmojiClickListener
         ) = EmojiFragment().apply {
             listener = emojiListener
             val bundle = Bundle()
-            bundle.putParcelableArrayList(EMOJI_LIST, userList)
+            //bundle.putParcelableArrayList(EMOJI_LIST, userList)
+            bundle.putStringArrayList(EMOJI_LIST, userList)
             arguments = bundle
         }
     }
@@ -41,13 +43,15 @@ class EmojiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val emojiItemViewList = arguments?.getParcelableArrayList<EmojiItemView>(EMOJI_LIST)
+        //val emojiItemViewList = arguments?.getParcelableArrayList<EmojiItemView>(EMOJI_LIST)
+        val emojiList = arguments?.getStringArrayList(EMOJI_LIST)
 
         val context = context
-        if (emojiItemViewList != null && context != null) {
+        //if (emojiItemViewList != null && context != null) {
+        if (emojiList != null && context != null) {
             //adapter = EmojiSheetTitlesAdapter(userList)
             attachLayoutManager()
-            binding.recyclerViewEmojis.adapter = EmojiRecyclerViewAdapter(emojiItemViewList).apply {
+            binding.recyclerViewEmojis.adapter = EmojiRecyclerViewAdapter(emojiList).apply {
                 emojiClickedListener = { item, _ ->
                     selectEmoji(item)
                 }
@@ -57,8 +61,8 @@ class EmojiFragment : Fragment() {
 
     }
 
-    private fun selectEmoji(itemView: EmojiItemView) {
-        listener.onEmojiClicked(itemView.unicode)
+    private fun selectEmoji(unicode: String) {
+        listener.onEmojiClicked(unicode)
     }
 
     private fun attachLayoutManager() {

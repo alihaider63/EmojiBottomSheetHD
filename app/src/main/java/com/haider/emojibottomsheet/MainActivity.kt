@@ -1,5 +1,6 @@
 package com.haider.emojibottomsheet
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.haider.emojibottomsheet.databinding.ActivityMainBinding
@@ -52,10 +53,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("ResourceType")
     private fun showEmojiDialog() {
         emojiPickerDialog = EmojiPickerDialog(
             supportFragmentManager,
-            emojiListener
+            emojiListener,
+            R.style.BottomSheetDialogTestTheme
         )
         emojiPickerDialog?.show()
     }

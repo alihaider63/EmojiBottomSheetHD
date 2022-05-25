@@ -10,7 +10,7 @@ object EmojiCompatUtils {
 
     private var emojiCompat: EmojiCompat? = null
 
-    fun initialize(context: Context, emojiListener: com.haider.emojidialog.emoji.EmojiInitListener) {
+    fun initialize(context: Context, emojiListener: EmojiInitListener) {
         emojiCompat = EmojiCompat.init(FontRequestEmojiCompatConfig(context, createFontRequest()).apply {
             setReplaceAll(true)
             registerInitCallback(InitCallback(emojiListener))
@@ -28,7 +28,7 @@ object EmojiCompatUtils {
         return emojiCompat?.hasEmojiGlyph(unicodeString) ?: false
     }
 
-    private class InitCallback internal constructor(private val listener: com.haider.emojidialog.emoji.EmojiInitListener) : EmojiCompat.InitCallback() {
+    private class InitCallback internal constructor(private val listener: EmojiInitListener) : EmojiCompat.InitCallback() {
 
         override fun onInitialized() {
             listener.onEmojisInitialized(true)

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.annotation.NonNull
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -12,13 +13,16 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.haider.emojidialog.R
 import com.haider.emojidialog.databinding.ViewEmojiBottomSheetBinding
 import com.haider.emojidialog.emoji.EmojiCategoryTransformer
+import com.haider.emojidialog.emoji.EmojiCompatUtils
 import com.haider.emojidialog.emoji.categories.*
+import com.haider.emojidialog.emoji.categoryUnicodes.EmojiData
 import com.haider.emojidialog.view.recyclerview.BottomSheetPagesAdapter
 import com.haider.emojidialog.view.recyclerview.EmojiItemView
 
 class EmojiPickerDialog(
     @NonNull private val frgManager: FragmentManager,
-    @NonNull private val emojiListener: EmojiClickListener
+    @NonNull private val emojiListener: EmojiClickListener,
+    @SuppressLint("ResourceType") @IdRes private val theme: Int = R.style.BottomSheetDialogTheme
 ): BottomSheetDialogFragment() {
 
 
@@ -36,6 +40,7 @@ class EmojiPickerDialog(
         fun initializeEmojiCategories() {
             val emojiCategoriesList = initializeEmojiCategoryList()
 
+            emojiCategoriesTransformedList.clear()
             for (emojiCategory in emojiCategoriesList) {
                 val emojisList = EmojiCategoryTransformer().transform(emojiCategory)
                 emojiCategoriesTransformedList.add(emojisList)
@@ -66,8 +71,9 @@ class EmojiPickerDialog(
         return binding.root
     }
 
+    @SuppressLint("ResourceType")
     override fun getTheme(): Int {
-        return R.style.BottomSheetDialogTheme
+        return theme
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -87,11 +93,23 @@ class EmojiPickerDialog(
 
         val emojiCategoriesTitles = initializeEmojiCategoriesTitles()
         val adapter = BottomSheetPagesAdapter(this)
+//
+//        for (emojisList in emojiCategoriesTransformedList) {
+//            val fragment =
+//                EmojiFragment.getNewInstance(
+//                    ArrayList(emojisList),
+//                    emojiListener
+//                )
+//
+//            adapter.addFragment(fragment)
+//        }
 
-        for (emojisList in emojiCategoriesTransformedList) {
+
+        val transformData = EmojiCategoryTransformer().transform(EmojiData.data)
+        for (emojisList in transformData) {
             val fragment =
                 EmojiFragment.getNewInstance(
-                    ArrayList(emojisList),
+                    emojisList,
                     emojiListener
                 )
 
@@ -99,6 +117,7 @@ class EmojiPickerDialog(
         }
 
         binding.emojiViewpager.adapter = adapter
+
 
         TabLayoutMediator(
             binding.emojiTitlesTab,
