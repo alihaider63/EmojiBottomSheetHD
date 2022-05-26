@@ -79,13 +79,7 @@ class EmojiPickerDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (emojiCategoriesTransformedList.isEmpty()) {
-            throw ExceptionInInitializerError(
-                "Categories not initialized, first call EmojiPickerDialog.initializeEmojiCategories()"
-            )
-        } else {
-            setUpUI()
-        }
+        setUpUI()
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")

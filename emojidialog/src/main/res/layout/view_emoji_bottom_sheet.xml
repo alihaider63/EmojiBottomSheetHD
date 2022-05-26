@@ -18,7 +18,7 @@
             app:tabMode="fixed"
             android:background="@color/background_color"
             app:tabIndicatorColor="@color/tab_indicator_color"
-            app:tabTextColor="@color/tab_bar_item_unselected"
+            app:tabTextColor="@color/tab_bar_unselected"
             app:tabIconTint="@color/emoji_category_titles_tint"
             />
 
