@@ -47,10 +47,4 @@ dependencies {
     implementation("androidx.emoji:emoji:$emojiVersion")
     implementation("androidx.emoji:emoji-appcompat:$emojiVersion")
     implementation("androidx.emoji:emoji-bundled:$emojiVersion")
-
-    def emojiViewVersion = "1.5.0"
-    def emojiViewProvider = "AppleProvider"
-
-    implementation "io.github.aghajari:AXEmojiView:$emojiViewVersion"
-    implementation "io.github.aghajari:AXEmojiView-$emojiViewProvider:$emojiViewVersion"
 }
