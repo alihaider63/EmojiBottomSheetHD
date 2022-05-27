@@ -9,9 +9,15 @@
         <entry key="app/src/main/res/layout/row_title.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/view_emoji_bottom_sheet.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/view_emoji_category.xml" value="0.234375" />
-        <entry key="emojidialog/src/main/res/layout/fragment_emoji.xml" value="0.21927083333333333" />
-        <entry key="emojidialog/src/main/res/layout/row_emoji.xml" value="0.21927083333333333" />
-        <entry key="emojidialog/src/main/res/layout/view_emoji_bottom_sheet.xml" value="0.21927083333333333" />
+        <entry key="emojidialog/src/main/res/drawable/selected_bg.xml" value="0.1235" />
+        <entry key="emojidialog/src/main/res/drawable/tab_icon.xml" value="0.1235" />
+        <entry key="emojidialog/src/main/res/drawable/tab_icon_color.xml" value="0.1235" />
+        <entry key="emojidialog/src/main/res/drawable/unselected_bg.xml" value="0.1235" />
+        <entry key="emojidialog/src/main/res/layout/fragment_emoji.xml" value="0.16996047430830039" />
+        <entry key="emojidialog/src/main/res/layout/row_emoji.xml" value="0.1046875" />
+        <entry key="emojidialog/src/main/res/layout/row_title.xml" value="0.16018518518518518" />
+        <entry key="emojidialog/src/main/res/layout/view_emoji_bottom_sheet.xml" value="0.1" />
+        <entry key="emojidialog/src/main/res/layout/view_emoji_category.xml" value="0.11614583333333334" />
       </map>
     </option>
   </component>
